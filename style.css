@@ -1,0 +1,52 @@
+:root {
+  --primary: #4c97ff;
+  --secondary: #9966ff;
+  --success: #0fbd8c;
+  --bg-dark: #1e1e1e;
+  --workspace-bg: #f9f9f9;
+  --block-height: 48px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ヘッダー */
+header { background: var(--bg-dark); color: white; padding: 0 20px; height: 50px; display: flex; align-items: center; justify-content: space-between; z-index: 100; }
+.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+
+/* メインレイアウト */
+main { flex: 1; display: flex; background: #eee; }
+
+/* サイドバー（パレット） */
+#palette { width: 260px; background: white; border-right: 1px solid #ddd; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.palette-item { 
+  background: var(--primary); color: white; padding: 12px; border-radius: 8px; 
+  cursor: grab; font-size: 14px; font-weight: bold; text-align: center; box-shadow: 0 4px 0 #3373cc;
+}
+
+/* ワークスペース */
+#workspace { flex: 1; position: relative; background-color: var(--workspace-bg); background-image: radial-gradient(#d1d1d1 1px, transparent 1px); background-size: 20px 20px; overflow: hidden; }
+
+/* 実行ステージ */
+#stage { width: 350px; background: white; border-left: 1px solid #ddd; position: relative; display: flex; flex-direction: column; }
+#preview-area { flex: 1; position: relative; overflow: hidden; }
+#actor { 
+  position: absolute; width: 60px; height: 60px; background: #ffab19; border-radius: 12px; 
+  display: flex; align-items: center; justify-content: center; font-size: 32px; 
+  top: 50%; left: 50%; transform: translate(-50%, -50%); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ブロック実体 */
+.block {
+  position: absolute; width: 160px; height: var(--block-height); background: var(--primary);
+  color: white; border-radius: 8px; padding: 0 15px; display: flex; align-items: center;
+  font-size: 13px; font-weight: bold; cursor: grab; user-select: none;
+  box-shadow: 0 4px 0 #3373cc; z-index: 10;
+}
+.block.dragging { opacity: 0.8; cursor: grabbing; z-index: 1000; pointer-events: none; }
+.block[data-type="ROTATE"] { background: var(--secondary); box-shadow: 0 4px 0 #774dc3; }
+
+/* 実行コントロール */
+.controls { padding: 20px; border-top: 1px solid #eee; display: flex; justify-content: center; }
+#run-btn { background: var(--success); color: white; border: none; padding: 12px 40px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+#run-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
