@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect-Block | No-Code Programming</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+    <header style="background: #333; color: white; padding: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+        <span>Connect-Block</span>
+        <button id="add-move" style="background: #4c97ff; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;">＋ 10歩うごかす</button>
+    </header>
+    <main style="display: flex; height: calc(100vh - 44px);">
+        <div id="workspace"></div>
+        <div id="stage">
+            <div id="cat">🐱</div>
+            <button id="run-btn">実行する</button>
+        </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
